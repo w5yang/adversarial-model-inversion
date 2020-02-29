@@ -57,7 +57,7 @@ def main():
     for i in range(args.nz):
         auxiliary.append(get_inversion_data(inversion, i, args.auxiliary, args.nz))
     np.random.shuffle(auxiliary)
-    pickle.dump(auxiliary, 'models/adversary/transferset.pickle')
+    pickle.dump(auxiliary, open('models/adversary/transferset.pickle','wb'))
 
 
 if __name__ == '__main__':
