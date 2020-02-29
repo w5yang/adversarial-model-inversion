@@ -32,6 +32,7 @@ def get_inversion_data(model, label, quantity, nz=530):
         Gaussian_noise[i][label] += 1.0
 
     input_vector = torch.from_numpy(Gaussian_noise)
+    input_vector = input_vector.float()
     results = model(input_vector)
     auxiliary_data = []
     for i in range(quantity):
