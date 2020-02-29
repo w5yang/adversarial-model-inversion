@@ -27,7 +27,7 @@ parser.add_argument('--auxiliary', type=int, default=100)
 
 def get_inversion_data(model, label, quantity, nz=530):
     # add Gaussian noise
-    Gaussian_noise = np.random.normal(0.0, 0.1, (quantity, nz))
+    Gaussian_noise = abs(np.random.normal(0.0, 0.1, (quantity, nz)))
     for i in range(quantity):
         Gaussian_noise[i][label] += 1.0
 
