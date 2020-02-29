@@ -14,7 +14,7 @@ parser = argparse.ArgumentParser(description='Auxiliary Information construction
 # parser.add_argument('--lr', type=float, default=0.01, metavar='')
 # parser.add_argument('--momentum', type=float, default=0.5, metavar='')
 parser.add_argument('--no-cuda', action='store_true', default=False)
-# parser.add_argument('--seed', type=int, default=1, metavar='')
+parser.add_argument('--seed', type=int, default=1, metavar='')
 # parser.add_argument('--log-interval', type=int, default=10, metavar='')
 parser.add_argument('--nc', type=int, default=1)
 parser.add_argument('--ndf', type=int, default=128)
