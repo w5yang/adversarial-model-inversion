@@ -25,9 +25,9 @@ parser.add_argument('--c', type=float, default=50.)
 parser.add_argument('--num_workers', type=int, default=1, metavar='')
 parser.add_argument('--auxiliary', type=int, default=100)
 
-def get_inversion_data(model, label, quantity):
+def get_inversion_data(model, label, quantity, nz=530):
     # add Gaussian noise
-    Gaussian_noise = np.random.normal(0.0, 0.1, (quantity, model.nz))
+    Gaussian_noise = np.random.normal(0.0, 0.1, (quantity, nz))
     for i in range(quantity):
         Gaussian_noise[i][label] += 1.0
 
@@ -54,7 +54,7 @@ def main():
     inversion = load_blackbox('inversion.pth', args=args, device=device)
     auxiliary = []
     for i in range(args.nz):
-        auxiliary.append(get_inversion_data(inversion, i, args.auxiliary))
+        auxiliary.append(get_inversion_data(inversion, i, args.auxiliary, args.nz))
     np.random.shuffle(auxiliary)
     pickle.dump(auxiliary, 'models/adversary/transferset.pickle')
 
