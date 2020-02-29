@@ -59,5 +59,5 @@ def main():
     pickle.dump(auxiliary, 'models/adversary/transferset.pickle')
 
 
-
-
+if __name__ == '__main__':
+    main()
