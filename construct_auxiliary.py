@@ -37,7 +37,7 @@ def get_inversion_data(model, label, quantity, nz=530):
     auxiliary_data = []
     for i in range(quantity):
         data = (results[i].detach().numpy(), input_vector[i])
-        auxiliary_data.extend(data)
+        auxiliary_data.append(data)
     return auxiliary_data
 
 def main():
@@ -55,7 +55,7 @@ def main():
     inversion = load_blackbox('inversion.pth', args=args, device=device)
     auxiliary = []
     for i in range(args.nz):
-        auxiliary.append(get_inversion_data(inversion, i, args.auxiliary, args.nz))
+        auxiliary.extend(get_inversion_data(inversion, i, args.auxiliary, args.nz))
     np.random.shuffle(auxiliary)
     pickle.dump(auxiliary, open('models/adversary/transferset.pickle','wb'))
 
