@@ -36,7 +36,7 @@ def get_inversion_data(model, label, quantity, nz=530):
     results = model(input_vector).cpu()
     auxiliary_data = []
     for i in range(quantity):
-        data = (results[i].numpy(), input_vector[i])
+        data = (results[i].detach().numpy(), input_vector[i])
         auxiliary_data.append(data)
     return auxiliary_data
 
